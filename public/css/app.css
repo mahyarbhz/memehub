@@ -218,3 +218,10 @@ body {
 .custom-comment-detail {
   width: 300px;
 }
+
+button {
+  outline: none;
+}
+button:focus {
+  outline: none;
+}

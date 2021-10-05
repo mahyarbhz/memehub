@@ -35,4 +35,20 @@ class Meme extends Model
     public function likes() {
         return $this->hasMany(Like::class);
     }
+
+    public function addLike(User $user)
+    {
+        return Like::create([
+            'user_id' => $user->id,
+            'meme_id' => $this->id
+        ]);
+    }
+
+    public function disLike(User $user)
+    {
+        return Like::where([
+            'user_id' => $user->id,
+            'meme_id' => $this->id
+        ])->delete();
+    }
 }

@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
+<html lang="{{ str_replace('_', '-', app()->getLocale()) }}" xmlns:livewire="http://www.w3.org/1999/html">
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -21,12 +21,12 @@
     <div class="loading">
         <div class="loader"></div>
     </div>
-    @livewire('navbar')
+    <livewire:navbar />
 
     <div class="container mx-auto lg:px-16 px-8" style="min-height:calc(90vh - 100px);">
         @yield('content')
     </div>
-    @livewire('footer')
+    <livewire:footer />
 
     <livewire:scripts />
     <script src="{{ asset('js/app.js') }}"></script>
