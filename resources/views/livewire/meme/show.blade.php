@@ -24,7 +24,7 @@
                         @else
                             <button class="mr-2" wire:click="like" wire:loading.attr="disabled"><i class="far fa-heart"></i></button>
                         @endif
-                        {{ count($meme->comments) }}<a href="#comments-box"><i class="mx-2 far fa-comment"></i></a>
+                        {{ count($meme->comments) }}<a href="#comments-box"><i class="mx-1 far fa-comment"></i></a>
                     </div>
                 </div>
             </div>
