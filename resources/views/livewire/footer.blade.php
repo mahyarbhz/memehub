@@ -1,4 +1,4 @@
-<div class="bg-gray-200" style="bottom: 0">
+<footer class="bg-gray-200" style="bottom: 0">
     <div class="flex md:flex-row flex-col justify-center mt-24 p-3 custom-align-center">
         <b>
             Thanks for using Memehub!
@@ -16,4 +16,4 @@
             <a href="#"><i class="fab fa-facebook mx-2"></i></a>
         </div>
     </div>
-</div>
+</footer>

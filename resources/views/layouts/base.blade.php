@@ -15,19 +15,20 @@
 
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/tailwindcss/2.1.2/tailwind.min.css" integrity="sha512-RntatPOhEcQEA81gC/esYoCkGkL7AYV7TeTPoU+R9zE44/yWxVvLIBfBSaMu78rhoDd73ZeRHXRJN5+aPEK53Q==" crossorigin="anonymous" referrerpolicy="no-referrer" />
     <link rel="stylesheet" href="{{ asset('css/app.css') }}">
-
+    <livewire:styles />
 </head>
 <body class="antialiased">
     <div class="loading">
         <div class="loader"></div>
     </div>
-    @include('layouts.navbar')
+    @livewire('navbar')
 
     <div class="container mx-auto lg:px-16 px-8" style="min-height:calc(90vh - 100px);">
         @yield('content')
     </div>
-    @include('layouts.footer')
+    @livewire('footer')
 
+    <livewire:scripts />
     <script src="{{ asset('js/app.js') }}"></script>
     @yield("page_by_page_js")
 </body>
