@@ -51,4 +51,13 @@ class Meme extends Model
             'meme_id' => $this->id
         ])->delete();
     }
+
+    public function addComment(User $user, String $comment)
+    {
+        return Comment::create([
+            'user_id' => $user->id,
+            'meme_id' => $this->id,
+            'comment' => $comment,
+        ]);
+    }
 }

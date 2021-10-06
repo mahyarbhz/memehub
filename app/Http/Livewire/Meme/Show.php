@@ -2,12 +2,20 @@
 
 namespace App\Http\Livewire\Meme;
 
+use App\Http\Controllers\CommentController;
+use App\Models\Comment;
 use App\Models\Like;
 use Livewire\Component;
+use PhpParser\Node\Expr\Cast\Object_;
 
 class Show extends Component
 {
-    public $meme;
+    public Object $meme;
+    public String $comment = "";
+
+    protected $rules = [
+        'comment' => 'required|min:3',
+    ];
 
     public function getLikesProperty(): int
     {
@@ -23,10 +31,19 @@ class Show extends Component
             return false;
         }
     }
+    public function getCommentsProperty(): object
+    {
+        return Comment::where('meme_id', $this->meme->id)->get();
+    }
 
     public function render()
     {
         return view('livewire.meme.show');
+    }
+
+    public function resetFilters()
+    {
+        $this->reset('comment');
     }
 
     public function like()
@@ -40,6 +57,23 @@ class Show extends Component
     {
         if (auth()->user()) {
             $this->meme->disLike(auth()->user());
+        }
+    }
+
+    public function addComment(): object
+    {
+        if (auth()->user()) {
+            $this->validate();
+
+            $comment = Comment::create([
+                'user_id' => auth()->user()->id,
+                'meme_id' => $this->meme->id,
+                'comment' => $this->comment,
+            ]);
+
+            $this->resetFilters();
+
+            return $comment;
         }
     }
 }
