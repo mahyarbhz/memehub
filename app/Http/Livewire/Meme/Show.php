@@ -11,7 +11,7 @@ class Show extends Component
 
     public function getLikesProperty(): int
     {
-        return count($this->meme->likes);
+        return count(Like::where('meme_id', $this->meme->id)->get());
     }
 
     public function getLikedProperty(): bool

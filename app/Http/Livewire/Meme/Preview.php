@@ -9,6 +9,11 @@ class Preview extends Component
 {
     public $meme;
 
+    public function getLikesProperty(): int
+    {
+        return count(Like::where('meme_id', $this->meme->id)->get());
+    }
+
     public function getLikedProperty()
     {
         if (auth()->user()) {
