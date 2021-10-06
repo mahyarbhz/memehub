@@ -1719,6 +1719,7 @@ require('./bootstrap');
 
 })));
 
-$(document).ready(function () {
-    $('.loading').delay(0).fadeOut(500);
+document.addEventListener("DOMContentLoaded", function(){
+    let fadeTarget = document.getElementById("loading");
+    fadeTarget.classList.add('loading-hide');
 });

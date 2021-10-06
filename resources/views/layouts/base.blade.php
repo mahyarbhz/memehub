@@ -18,7 +18,7 @@
     <livewire:styles />
 </head>
 <body class="antialiased">
-    <div class="loading">
+    <div class="loading" id="loading">
         <div class="loader"></div>
     </div>
     <livewire:navbar />
