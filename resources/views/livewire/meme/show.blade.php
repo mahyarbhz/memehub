@@ -37,14 +37,14 @@
             <div class="flex flex-wrap -mx-3 mb-6">
                 <h2 class="px-4 pt-3 pb-2 text-gray-800 text-lg">Add a new comment</h2>
                 <div class="w-full md:w-full px-3 mb-2 mt-2">
-                    <textarea wire:model="comment" class="bg-gray-100 rounded border border-gray-400 leading-normal resize-none w-full h-20 py-2 px-3 font-medium placeholder-gray-700 focus:outline-none focus:bg-white" placeholder="@if(\Illuminate\Support\Facades\Auth::guest()) You need to login! @else @if(!\Illuminate\Support\Facades\Auth::check()) You need to verify your email. @else Your comment... @endif @endif" @if(!\Illuminate\Support\Facades\Auth::check() || \Illuminate\Support\Facades\Auth::guest()) disabled @endif></textarea>
+                    <textarea wire:model="comment" class="bg-gray-100 transition rounded border border-gray-400 leading-normal resize-none w-full h-20 py-2 px-3 font-medium placeholder-gray-700 focus:outline-none focus:bg-white" placeholder="@if(\Illuminate\Support\Facades\Auth::guest()) You need to login! @else @if(!\Illuminate\Support\Facades\Auth::check()) You need to verify your email. @else Your comment... @endif @endif" @if(!\Illuminate\Support\Facades\Auth::check() || \Illuminate\Support\Facades\Auth::guest()) disabled @endif></textarea>
                     @error('comment') <span id="comment-error" class="mt-2 text-red-500">{{ $message }}</span> @enderror
 
                 </div>
                 <div class="w-full md:w-full flex items-start md:w-full px-3">
                     <div class="flex items-start w-1/2 text-gray-700 px-2 mr-auto"></div>
                     <div class="-mr-1">
-                        <input wire:loading.attr="disabled" type="submit" class="bg-white text-gray-700 font-medium py-1 px-4 border border-gray-400 rounded-lg tracking-wide mr-1 hover:bg-gray-100" value="Post Comment" @if(!\Illuminate\Support\Facades\Auth::check() || \Illuminate\Support\Facades\Auth::guest()) disabled @endif>
+                        <input wire:loading.attr="disabled" type="submit" class="bg-white transition text-gray-700 font-medium py-1 px-4 border border-gray-400 rounded tracking-wide mr-1 hover:bg-gray-200" value="Submit" @if(!\Illuminate\Support\Facades\Auth::check() || \Illuminate\Support\Facades\Auth::guest()) disabled @endif>
                     </div>
                 </div>
             </div>
@@ -56,7 +56,17 @@
                 This meme has no comment
             @else
                 @foreach($this->comments as $comment)
-                    <livewire:comment.show :comment=$comment />
+                    <div class="flex">
+                        <div class="flex-shrink-0 mr-3">
+                            <img class="mt-2 rounded-full w-8 h-8 sm:w-10 sm:h-10" src="{{ url('uploads/'.$comment->user->image) }}">
+                        </div>
+                        <div class="flex-1 custom-comment-detail border rounded-lg px-4 py-2 sm:px-6 sm:py-4 leading-relaxed">
+                            <strong>{{ $comment->user->name }}</strong> <span class="text-xs text-gray-400">{{ $comment->created_at_for_humans }}</span>
+                            <p class="text-sm break-words">
+                                {{ $comment->comment }}
+                            </p>
+                        </div>
+                    </div>
                 @endforeach
             @endif
         </div>
