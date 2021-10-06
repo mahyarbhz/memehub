@@ -11,8 +11,10 @@ class Preview extends Component
 
     public function getLikedProperty()
     {
-        return Like::where('user_id', auth()->user()->id)
-            ->where('meme_id', $this->meme->id)->exists();
+        if (auth()->user()) {
+            return Like::where('user_id', auth()->user()->id)
+                ->where('meme_id', $this->meme->id)->exists();
+        }
     }
 
     public function render()

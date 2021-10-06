@@ -9,10 +9,19 @@ class Show extends Component
 {
     public $meme;
 
-    public function getLikedProperty()
+    public function getLikesProperty(): int
     {
-        return Like::where('user_id', auth()->user()->id)
-            ->where('meme_id', $this->meme->id)->exists();
+        return count($this->meme->likes);
+    }
+
+    public function getLikedProperty(): bool
+    {
+        if (auth()->user()) {
+            return Like::where('user_id', auth()->user()->id)
+                ->where('meme_id', $this->meme->id)->exists();
+        } else {
+            return false;
+        }
     }
 
     public function render()
@@ -22,11 +31,15 @@ class Show extends Component
 
     public function like()
     {
-        $this->meme->addLike(auth()->user());
+        if (auth()->user()) {
+            $this->meme->addLike(auth()->user());
+        }
     }
 
     public function disLike()
     {
-        $this->meme->disLike(auth()->user());
+        if (auth()->user()) {
+            $this->meme->disLike(auth()->user());
+        }
     }
 }
