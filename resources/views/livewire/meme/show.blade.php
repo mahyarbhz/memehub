@@ -52,7 +52,7 @@
     </div>
     <div class="antialiased mx-auto max-w-screen-sm">
         <div class="space-y-4">
-            @if(count($meme->comments) == 0)
+            @if(count($this->comments) == 0)
                 This meme has no comment
             @else
                 @foreach($this->comments as $comment)

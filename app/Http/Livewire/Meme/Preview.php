@@ -29,11 +29,15 @@ class Preview extends Component
 
     public function like()
     {
-        $this->meme->addLike(auth()->user());
+        if (auth()->user()) {
+            $this->meme->addLike(auth()->user());
+        }
     }
 
     public function disLike()
     {
-        $this->meme->disLike(auth()->user());
+        if (auth()->user()) {
+            $this->meme->disLike(auth()->user());
+        }
     }
 }
