@@ -46,9 +46,9 @@ class MemeController extends Controller
             'photo' => 'required|mimes:jpeg,png|dimensions:max_width=2160,max_height=2160|max:1024',
             'credit' => 'max:190',
             'category_id' => 'required',
-            'captcha' => 'required|captcha'
-        ], $messages = [
-            'captcha' => 'Your input is wrong.'
+//            'g-recaptcha-response' => 'required|captcha'
+//        ], $messages = [
+//            'g-recaptcha-response' => 'Please check captcha.'
         ])->validate();
 
         if($request->hasFile('photo')) {

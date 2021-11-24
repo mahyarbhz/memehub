@@ -14,8 +14,7 @@
         "laravel/fortify": "^1.7",
         "laravel/framework": "^8.40",
         "laravel/tinker": "^2.5",
-        "livewire/livewire": "^2.6",
-        "mews/captcha": "^3.2"
+        "livewire/livewire": "^2.6"
     },
     "require-dev": {
         "facade/ignition": "^2.5",

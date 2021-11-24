@@ -46,8 +46,8 @@ class User extends Authenticatable implements MustVerifyEmail
     ];
 
     public function may($scope) {
-        $mem_scope = $this->role->scope;
-        if ($scope == $mem_scope)
+        $_scope = $this->role->scope ?: 'member';
+        if ($scope == $_scope)
             return true;
         return false;
     }

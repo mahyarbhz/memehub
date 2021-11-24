@@ -19,7 +19,6 @@
         <div class="loader"></div>
     </div>
     <livewire:navbar />
-
     <div class="container mx-auto lg:px-16 px-8" style="min-height:calc(90vh - 100px);">
         @yield('content')
     </div>

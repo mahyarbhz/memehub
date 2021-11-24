@@ -20,9 +20,11 @@
                     </button>
                     <div x-show="open" x-transition:enter="transition ease-out duration-100" x-transition:enter-start="transform opacity-0 scale-95" x-transition:enter-end="transform opacity-100 scale-100" x-transition:leave="transition ease-in duration-75" x-transition:leave-start="transform opacity-100 scale-100" x-transition:leave-end="transform opacity-0 scale-95" class="absolute right-0 w-full mt-2 origin-top-right rounded-md shadow-lg md:w-48" style="z-index: 9">
                         <div class="px-2 py-2 bg-white rounded-md shadow">
-                            @foreach(\App\Models\Category::paginate(3) as $category)
+                            @forelse ($g_categories as $category)
                                 <a class="block px-4 py-2 mt-2 text-sm font-semibold bg-transparent rounded-lg md:mt-0 hover:text-gray-900 focus:text-gray-900 transition duration-200 ease-in-out hover:underline focus:bg-gray-100 focus:outline-none focus:shadow-outline" href="{{ route('categories.show', $category->id) }}">{{ $category->name }}</a>
-                            @endforeach
+                            @empty
+                                <a class="block px-4 py-2 mt-2 text-sm font-semibold bg-transparent rounded-lg md:mt-0 hover:text-gray-900 focus:text-gray-900 transition duration-200 ease-in-out focus:bg-gray-100 focus:outline-none focus:shadow-outline" disabled>No categories</a>
+                            @endforelse
                         </div>
                     </div>
                 </div>

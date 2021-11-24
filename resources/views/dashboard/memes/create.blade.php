@@ -66,22 +66,6 @@
                     <span id="image-error" class="text-red-500"></span>
                 </div>
             </div>
-            <div class="md:flex md:items-center mb-6">
-                <div class="md:w-1/4">
-                    <label class="block text-gray-500 font-bold md:text-right mb-1 md:mb-0 pr-4" for="inline-captcha">
-                        <span id="captcha-image">{!! captcha_img('math') !!}</span>
-                        <button type="button" class="rounded-md px-1 py-1 outline-none reload" id="reload">
-                            <b>
-                                ↻
-                            </b>
-                        </button>
-                    </label>
-                </div>
-                <div class="md:w-3/4">
-                    <input class="appearance-none border-2 border-gray-200 rounded w-full py-2 px-4 text-gray-700 leading-tight focus:outline-none focus:bg-white focus:border-purple-500" id="inline-captcha" type="text" placeholder="Captcha letters" name="captcha">
-                    <span id="captcha-error" class="text-red-500"></span>
-                </div>
-            </div>
             <div class="md:flex md:items-center">
                 <div class="md:w-1/4"></div>
                 <div class="md:w-3/4">
@@ -100,16 +84,6 @@
                 image_preview.src = URL.createObjectURL(file)
             }
         }
-
-        $('#reload').click(function () {
-            $.ajax({
-                type: 'GET',
-                url: '/reloadcaptcha',
-                success: function (data) {
-                    $("#captcha-image").html(data.captcha);
-                }
-            });
-        });
         $.ajaxSetup({
             headers: {
                 'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
@@ -147,12 +121,10 @@
                     if (response.responseJSON.errors.credit) $('#inline-credit').css('border-color', '#F87171')
                     if (response.responseJSON.errors.category) $('#inline-category').css('border-color', '#F87171')
                     if (response.responseJSON.errors.image) $('#inline-image').css('border-color', '#F87171')
-                    if (response.responseJSON.errors.captcha) $('#inline-captcha').css('border-color', '#F87171')
                     $('#description-error').text(response.responseJSON.errors.description);
                     $('#credit-error').text(response.responseJSON.errors.credit);
                     $('#category-error').text(response.responseJSON.errors.category);
                     $('#image-error').text(response.responseJSON.errors.photo);
-                    $('#captcha-error').text(response.responseJSON.errors.captcha);
                 },
                 complete: function() {
                     $("input[name=submit]").css('pointer-events', 'auto').addClass("bg-blue-500").removeClass("bg-gray-900").val("Submit");
