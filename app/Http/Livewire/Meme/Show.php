@@ -99,7 +99,7 @@ class Show extends Component
 
                 $this->alert('success', 'Your comment was posted successfully.', [
                     'position' => 'bottom-start',
-                    'timer' => '2500',
+                    'timer' => '4000',
                     'toast' => true,
                     'timerProgressBar' => true,
                 ]);
