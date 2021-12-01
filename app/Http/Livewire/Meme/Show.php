@@ -5,11 +5,13 @@ namespace App\Http\Livewire\Meme;
 use App\Http\Controllers\CommentController;
 use App\Models\Comment;
 use App\Models\Like;
+use Jantinnerezo\LivewireAlert\LivewireAlert;
 use Livewire\Component;
-use PhpParser\Node\Expr\Cast\Object_;
 
 class Show extends Component
 {
+    use LivewireAlert;
+
     public Object $meme;
     public String $comment = "";
 
@@ -46,34 +48,71 @@ class Show extends Component
         $this->reset('comment');
     }
 
-    public function like()
+    public function like(): void
     {
-        if (auth()->check() && !auth()->guest()) {
+        if (!auth()->guest()) {
             $this->meme->addLike(auth()->user());
-        }
-    }
-
-    public function disLike()
-    {
-        if (auth()->check() && !auth()->guest()) {
-            $this->meme->disLike(auth()->user());
-        }
-    }
-
-    public function addComment(): object
-    {
-        if (auth()->user()) {
-            $this->validate();
-
-            $comment = Comment::create([
-                'user_id' => auth()->user()->id,
-                'meme_id' => $this->meme->id,
-                'comment' => $this->comment,
+        } else {
+            $this->alert('warning', 'You need to login.', [
+                'position' => 'bottom-start',
+                'timer' => '2500',
+                'toast' => true,
+                'timerProgressBar' => true,
             ]);
+        }
+    }
 
-            $this->resetFilters();
+    public function disLike(): void
+    {
+        if (!auth()->guest()) {
+            $this->meme->disLike(auth()->user());
+        } else {
+            $this->alert('warning', 'You need to login.', [
+                'position' => 'bottom-start',
+                'timer' => '2500',
+                'toast' => true,
+                'timerProgressBar' => true,
+            ]);
+        }
+    }
 
-            return $comment;
+    public function addComment()
+    {
+        if (!auth()->guest()) {
+            if (!auth()->user()->hasVerifiedEmail()) {
+                return $this->alert('warning', "You need to verify your email.", [
+                    'position' => 'bottom-start',
+                    'timer' => '2500',
+                    'toast' => true,
+                    'timerProgressBar' => true,
+                ]);
+            } else {
+                $this->validate();
+
+                $comment = Comment::create([
+                    'user_id' => auth()->user()->id,
+                    'meme_id' => $this->meme->id,
+                    'comment' => $this->comment,
+                ]);
+
+                $this->resetFilters();
+
+                $this->alert('success', 'Your comment was posted successfully.', [
+                    'position' => 'bottom-start',
+                    'timer' => '2500',
+                    'toast' => true,
+                    'timerProgressBar' => true,
+                ]);
+
+                return $comment;
+            }
+        } else {
+            return $this->alert('warning', 'You need to login.', [
+                'position' => 'bottom-start',
+                'timer' => '2500',
+                'toast' => true,
+                'timerProgressBar' => true,
+            ]);
         }
     }
 }

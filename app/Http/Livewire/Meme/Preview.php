@@ -3,10 +3,13 @@
 namespace App\Http\Livewire\Meme;
 
 use App\Models\Like;
+use Jantinnerezo\LivewireAlert\LivewireAlert;
 use Livewire\Component;
 
 class Preview extends Component
 {
+    use LivewireAlert;
+
     public $meme;
 
     public function getLikesProperty(): int
@@ -29,15 +32,29 @@ class Preview extends Component
 
     public function like()
     {
-        if (auth()->check() && !auth()->guest()) {
+        if (!auth()->guest()) {
             $this->meme->addLike(auth()->user());
+        } else {
+            $this->alert('warning', 'You need to login.', [
+                'position' => 'bottom-start',
+                'timer' => '2500',
+                'toast' => true,
+                'timerProgressBar' => true,
+            ]);
         }
     }
 
     public function disLike()
     {
-        if (auth()->check() && !auth()->guest()) {
+        if (!auth()->guest()) {
             $this->meme->disLike(auth()->user());
+        } else {
+            $this->alert('warning', 'You need to login.', [
+                'position' => 'bottom-start',
+                'timer' => '2500',
+                'toast' => true,
+                'timerProgressBar' => true,
+            ]);
         }
     }
 }
