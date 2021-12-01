@@ -1,5 +1,5 @@
-<footer>
-    <div class="flex md:flex-row flex-col justify-center mt-24 p-3 custom-align-center">
+<footer class="py-8 mt-16">
+    <div class="flex md:flex-row flex-col justify-center p-4 custom-align-center">
         <b>
             Thanks for using Memehub!
         </b>
