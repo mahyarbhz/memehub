@@ -47,10 +47,6 @@ Route::get('/memes/create', [MemeController::class, 'create'])
     ->name('memes.create')
     ->middleware(['auth', 'verified']);
 
-Route::post('/memes/store', [MemeController::class, 'store'])
-    ->name('memes.store')
-    ->middleware(['auth', 'verified', 'throttle:5']);
-
 Route::resource('comments',CommentController::class)
     ->middleware(['auth', 'verified']);
 

@@ -35,43 +35,6 @@ class MemeController extends Controller
     }
 
     /**
-     * Store a newly created resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\JsonResponse
-     */
-    public function store(Request $request)
-    {
-        $validator = Validator::make($request->all(), [
-            'photo' => 'required|mimes:jpeg,png|dimensions:max_width=2160,max_height=2160|max:1024',
-            'credit' => 'max:190',
-            'category_id' => 'required',
-        ])->validate();
-
-        if($request->hasFile('photo')) {
-            $file = $request->photo;
-            $filepath = Storage::disk('public_uploads')->put('memes', $file);
-        }
-
-        $timestamp = now();
-        $new_post_id = DB::table('memes')->insertGetId([
-            'credit' => $request->input('credit'),
-            'category_id' => $request->input('category_id'),
-            'user_id' => Auth::user()->id,
-            'photo' => $filepath,
-            'created_at' => $timestamp,
-            'updated_at' => $timestamp,
-        ]);
-
-        return response()->json(
-            [
-                'success' => true,
-                'message' => "Meme uploaded successfully, you'll redirect to your dashboard.",
-            ]
-        );
-    }
-
-    /**
      * Display the specified resource.
      *
      * @param  \App\Models\Meme  $meme
