@@ -77,6 +77,9 @@ class MemeController extends Controller
     public function destroy(Meme $meme)
     {
         if ($meme->user_id == Auth::user()->id) {
+            $image_path = $meme->photo;
+            Storage::disk('public_uploads')->delete($image_path);
+
             $meme->comments()->delete();
             $meme->delete();
         }

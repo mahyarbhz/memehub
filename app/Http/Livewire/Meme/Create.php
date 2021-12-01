@@ -28,7 +28,6 @@ class Create extends Component
             'credit' => 'max:190',
             'category_id' => 'required'
         ]);
-//        $photo = $this->photo->storeAs('/memes', $disk = 'public_uploads');
         $filepath = Storage::disk('public_uploads')->put('memes', $validatedData['photo']);
         Meme::create([
             'user_id' => auth()->user()->id,
