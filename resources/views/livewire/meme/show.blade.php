@@ -37,7 +37,7 @@
             <div class="flex flex-wrap -mx-3 mb-6">
                 <h2 class="px-4 pt-3 pb-2 text-gray-800 text-lg">Add a new comment</h2>
                 <div class="w-full md:w-full px-3 mb-2 mt-2">
-                    <textarea wire:model="comment" class="bg-gray-100 transition rounded border border-gray-400 leading-normal resize-none w-full h-20 py-2 px-3 font-medium placeholder-gray-700 focus:outline-none focus:bg-white" placeholder="@if(\Illuminate\Support\Facades\Auth::guest()) You need to login! @else @if(!\Illuminate\Support\Facades\Auth::check()) You need to verify your email. @else Your comment... @endif @endif" @if(!\Illuminate\Support\Facades\Auth::check() || \Illuminate\Support\Facades\Auth::guest()) disabled @endif></textarea>
+                    <textarea wire:model="comment" class="bg-white transition rounded border border-gray-400 leading-normal resize-none w-full h-20 py-2 px-3 font-medium placeholder-gray-500 focus:outline-none" placeholder="Great meme"></textarea>
                     @error('comment') <span id="comment-error" class="mt-2 text-red-500">{{ $message }}</span> @enderror
 
                 </div>

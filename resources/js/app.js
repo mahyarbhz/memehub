@@ -1,5 +1,6 @@
 window.$ = window.jQuery = require('jquery');
 window.Popper = require('popper.js').default;
+window.Swal = require('sweetalert2');
 require('./bootstrap');
 
 (function (global, factory) {

@@ -261,3 +261,19 @@ button:focus {
   src: local(""), url("/fonts/nunito-v16-latin-700.eot?#iefix") format("embedded-opentype"), url("/fonts/nunito-v16-latin-700.woff2") format("woff2"), url("/fonts/nunito-v16-latin-700.woff") format("woff"), url("/fonts/nunito-v16-latin-700.ttf") format("truetype"), url("/fonts/nunito-v16-latin-700.svg#Nunito") format("svg");
   /* Legacy iOS */
 }
+.navbar {
+  box-shadow: rgba(50, 50, 50, 0.5) 0 0 10px 0;
+}
+
+footer {
+  bottom: 0;
+  background-color: #32393d;
+  color: #f0f0f0;
+  border-radius: 15px 15px 0 0;
+  box-shadow: rgba(50, 50, 50, 0.5) 0 0 20px 0;
+}
+footer hr {
+  border: 0;
+  height: 1px;
+  background-image: linear-gradient(to right, rgba(240, 240, 240, 0), rgba(240, 240, 240, 0.75), rgba(240, 240, 240, 0));
+}

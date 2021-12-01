@@ -25,6 +25,12 @@
     <livewire:footer />
 
     <livewire:scripts />
+{{--    <script src="{{ asset('vendor/livewire-alert/livewire-alert.js') }}"></script>--}}
+{{--    <x-livewire-alert::scripts />--}}
+{{--    <x-livewire-alert::flash />--}}
+
+    <script src="{{ asset('js/sweetalert2.js') }}"></script>
+    <x-livewire-alert::scripts />
     <script src="{{ asset('js/app.js') }}"></script>
     @yield("page_by_page_js")
 </body>

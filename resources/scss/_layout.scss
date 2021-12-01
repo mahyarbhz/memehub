@@ -1,0 +1,17 @@
+.navbar {
+    box-shadow: rgba(50, 50, 50, .5) 0 0 10px 0;
+}
+
+footer {
+    bottom: 0;
+    background-color: rgba(#32393d, 1);
+    color: rgba(240, 240, 240, 1);
+    border-radius: 15px 15px 0 0;
+    box-shadow: rgba(50, 50, 50, .5) 0 0 20px 0;
+
+    hr {
+        border: 0;
+        height: 1px;
+        background-image: linear-gradient(to right, rgba(240, 240, 240, 0), rgba(240, 240, 240, 0.75), rgba(240, 240, 240, 0));
+    }
+}
