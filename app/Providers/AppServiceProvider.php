@@ -34,7 +34,7 @@ class AppServiceProvider extends ServiceProvider
             return Auth::user()->may($scope);
         });
 
-        $categories = Category::paginate(3);
+        $categories = Category::orderBy('position')->paginate(3);
         View::share('g_categories', $categories);
     }
 }

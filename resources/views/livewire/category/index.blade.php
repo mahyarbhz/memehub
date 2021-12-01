@@ -27,7 +27,7 @@
         Categories
     </div>
     <div class="flex justify-center mt-4">
-        <table class="border-collapse table-auto border border-green-800 w-full">
+        <table wire:sortable="updateCategoryOrder" class="border-collapse table-auto border border-green-800 w-full">
             <thead class="bg-blue-200">
             <tr>
                 <th class="border border-blue-600 px-2 py-2">Id</th>
@@ -38,7 +38,7 @@
             </thead>
             <tbody>
             @foreach($categories as $category)
-                <tr>
+                <tr wire:sortable.item="{{ $category->id }}" wire:key="task-{{ $category->id }}">
                     <td class="border border-blue-600 py-2 pl-2">{{ $category->id }}</td>
                     <td class="border border-blue-600 py-2 pl-2">{{ $category->name }}</td>
                     <td class="border border-blue-600 py-2 pl-2">{{ $category->position }}</td>

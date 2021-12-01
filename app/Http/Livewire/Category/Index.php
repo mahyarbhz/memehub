@@ -23,6 +23,13 @@ class Index extends Component
         $this->reset('name');
     }
 
+    public function updateCategoryOrder($categories)
+    {
+        foreach ($categories as $category) {
+            Category::find($category['value'])->update(['position' => $category['order']]);
+        }
+    }
+
     public function store()
     {
         $validatedData = $this->validate([
