@@ -55,14 +55,17 @@
                         <input wire:model="photo" accept="image/*" type="file" name="photo" required>
                         <i class="fas fa-cloud-upload-alt"></i> Meme image
                     </label>
-                    <span wire:loading wire:target="photo">Uploading...</span>
+                    <span wire:loading wire:target="photo">Loading...</span>
+                    @if ($photo)
+                        <img src="{{ $photo->temporaryUrl() }}">
+                    @endif
                     @error('photo') <span class="error">{{ $message }}</span> @enderror
                 </div>
             </div>
             <div class="md:flex md:items-center">
                 <div class="md:w-1/4"></div>
                 <div class="md:w-3/4">
-                    <input type="submit" value="Submit" name="submit" class="shadow transition duration-200 ease-in-out bg-blue-500 hover:bg-blue-700 focus:shadow-outline focus:outline-none text-white font-bold py-2 px-4 rounded">
+                    <input type="submit" wire:loading.attr="disabled" value="Submit" name="submit" class="shadow transition duration-200 ease-in-out bg-blue-500 hover:bg-blue-700 focus:shadow-outline focus:outline-none text-white font-bold py-2 px-4 rounded">
                 </div>
             </div>
         </form>
