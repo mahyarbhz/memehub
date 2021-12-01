@@ -113,6 +113,8 @@ class CategoryController extends Controller
      */
     public function destroy(Category $category)
     {
+        Category::where('position', '>', $category->position)->update(['position' => DB::raw('position - 1')]);
+
         $category->memes()->delete();
         $category->delete();
 
