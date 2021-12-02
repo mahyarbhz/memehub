@@ -19,7 +19,7 @@
                     </label>
                 </div>
                 <div class="md:w-3/4">
-                    <input class="appearance-none border-2 border-gray-200 rounded w-full py-2 px-4 text-gray-700 leading-tight focus:outline-none focus:bg-white focus:border-purple-500" id="inline-name" type="text" placeholder="Gaming" name="name" required>
+                    <input id="inline-name" type="text" placeholder="Gaming" name="name" value="{{ $category->name }}" class="appearance-none border-2 border-gray-200 rounded w-full py-2 px-4 text-gray-700 leading-tight focus:outline-none focus:bg-white focus:border-purple-500" required>
                     <span id="name-error" class="text-red-500"></span>
                 </div>
             </div>
