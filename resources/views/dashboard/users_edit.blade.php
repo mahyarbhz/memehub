@@ -43,5 +43,5 @@
     </div>
 @endsection
 
-@section("page_by_page_js")
+@section("customJS")
 @endsection

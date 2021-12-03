@@ -12,6 +12,7 @@
 
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/tailwindcss/2.1.2/tailwind.min.css" integrity="sha512-RntatPOhEcQEA81gC/esYoCkGkL7AYV7TeTPoU+R9zE44/yWxVvLIBfBSaMu78rhoDd73ZeRHXRJN5+aPEK53Q==" crossorigin="anonymous" referrerpolicy="no-referrer" />
     <link rel="stylesheet" href="{{ asset('css/app.css') }}">
+    @yield("customCSS")
     <livewire:styles />
 </head>
 <body class="antialiased">
@@ -32,6 +33,6 @@
     <script src="{{ asset('js/sweetalert2.js') }}"></script>
     <x-livewire-alert::scripts />
     <script src="{{ asset('js/app.js') }}"></script>
-    @yield("page_by_page_js")
+    @yield("customJS")
 </body>
 </html>

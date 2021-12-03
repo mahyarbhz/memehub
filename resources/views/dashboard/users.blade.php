@@ -11,7 +11,7 @@
     </div>
 @endsection
 
-@section('page_by_page_js')
+@section('customJS')
     <script type="text/javascript">
         $(document).ready(function(){
 
