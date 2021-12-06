@@ -2,6 +2,7 @@
 
 namespace App\Models;
 
+use ChrisDiCarlo\EloquentHumanTimestamps\HumanTimestamps;
 use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
@@ -11,7 +12,7 @@ use Illuminate\Notifications\Notifiable;
 
 class User extends Authenticatable implements MustVerifyEmail
 {
-    use HasFactory, Notifiable;
+    use HasFactory, Notifiable, HumanTimestamps;
 
     /**
      * The attributes that are mass assignable.

@@ -9,8 +9,7 @@ use ChrisDiCarlo\EloquentHumanTimestamps\HumanTimestamps;
 
 class Meme extends Model
 {
-    use HasFactory;
-    use HumanTimestamps;
+    use HasFactory, HumanTimestamps;
 
     protected $fillable = [
         'description',
